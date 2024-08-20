@@ -4,7 +4,7 @@
 
 yum update -y
 yum -y remove httpd
-yum install -y httpd
+yum install -y httpd php
 
 service httpd start
 chkconfig httpd on
@@ -15,6 +15,5 @@ chmod 2775 /var/www
 find /var/www -type d -exec chmod 2775 {} \;
 find /var/www -type f -exec chmod 0664 {} \;
 cd /var/www/html
-#curl http://169.254.169.254/latest/meta-data -o index.html
-curl 
+curl https://raw.githubusercontent.com/danny-zh/terraform_aws_web_service/main/index.html -o index.html
 curl https://raw.githubusercontent.com/hashicorp/learn-terramino/master/index.php -O
