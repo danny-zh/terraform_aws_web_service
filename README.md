@@ -1,5 +1,5 @@
 # terraform_aws_web_service
-A simple terraform configuration for deploying a 2 tier application composed of an ELB interface facing and 2 ec2 instances is different AZs
+A simple terraform configuration for deploying a 2 tier application inside a custom VPC with 4 subnets (2 private 2 public) containing an ELB internet facing and 2 ec2 instances within private subnets in different AZs
 
 This terraform configuration:
 
