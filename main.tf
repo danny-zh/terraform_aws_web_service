@@ -14,7 +14,7 @@ module "vpc" {
   azs = data.aws_availability_zones.available.names
 
   private_subnets = slice(var.aws_private_subnet_cidr_blocks, 0, var.aws_private_subnet_count)
-  public_subnets  = slice(var.aws_public_subnet_cidr_blocks, 0, var.aws_private_subnet_count)
+  public_subnets  = slice(var.aws_public_subnet_cidr_blocks, 0, var.aws_public_subnet_count)
 
   enable_nat_gateway = var.aws_enable_nat_gateway
   enable_vpn_gateway = var.aws_enable_vpn_gateway
