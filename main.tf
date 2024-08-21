@@ -18,7 +18,9 @@ module "vpc" {
 
   enable_nat_gateway = var.aws_enable_nat_gateway
   enable_vpn_gateway = var.aws_enable_vpn_gateway
-  tags               = var.aws_resource_tags
+  tags               = merge(
+    { Name = "VPC-${var.aws_resource_tags["project"]}-${var.aws_resource_tags["environment"]}"}, 
+    var.aws_resource_tags)
 }
 
 module "app_security_group" {
@@ -75,7 +77,7 @@ module "elb_http" {
   }]
 
   health_check = {
-    target              = "HTTP:80/index.html"
+    target              = "HTTP:80/index.php"
     interval            = 10
     healthy_threshold   = 3
     unhealthy_threshold = 10
