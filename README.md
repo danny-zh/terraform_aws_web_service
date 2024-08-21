@@ -5,10 +5,10 @@ This terraform configuration:
 
 1. Creates a custom VPC (CIDR 10.0.0.0/16) using the official VPC module from https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest
 2. Creates 2 private and public subnets
-4. Creates internet facing ELB to process http requests.
-5. Creates security group for the ELB to permit inbound http request from the internet
-5. Creates security group for the instances to permit inbound http requests comming from the ELB
-7. Creates a pool of instances to be deployed in the private subnets
+4. Creates internet facing classic ELB to process http requests. Using module https://registry.terraform.io/modules/terraform-aws-modules/elb/aws/latest
+5. Creates security group for the ELB to permit inbound http request from the internet. Using module https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest
+5. Creates security group for the instances to permit inbound http requests comming from the ELB. Using module https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest
+7. Creates a pool of instances to be deployed in the private subnets. Using a self defined module (see modules/aws-instance)
 8. Prints output variables in console after terraform apply command for checking the entry point (application url) of our app
 
 The image below is an example of how the application must render and be accesible from the web browser.
