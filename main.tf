@@ -18,9 +18,10 @@ module "vpc" {
 
   enable_nat_gateway = var.aws_enable_nat_gateway
   enable_vpn_gateway = var.aws_enable_vpn_gateway
-  tags               = merge(
-    { Name = "VPC-${var.aws_resource_tags["project"]}-${var.aws_resource_tags["environment"]}"}, 
-    var.aws_resource_tags)
+
+  tags = merge(
+    { Name = "VPC-${var.aws_resource_tags["project"]}-${var.aws_resource_tags["environment"]}" },
+  var.aws_resource_tags)
 }
 
 module "app_security_group" {
@@ -88,7 +89,7 @@ module "elb_http" {
 }
 
 module "ec2_instances" {
-  source = "./modules/aws-instance"
+  source = "./modules/terraform-aws-instance"
 
   depends_on = [module.vpc]
 
